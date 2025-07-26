@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法编辑器</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        #effect {
+            white-space: pre-wrap;
+            overflow-y: auto;
+            resize: vertical;
+            min-height: 60px;
+        }
+    </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="##000000">
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <button onclick="window.location.href='../index.html'" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">返回首页</button>
+    </div>
+    <h1>魔法细则系统</h1>
+    <form id="magicForm">
+        <div class="form-group">
+            <label for="name">魔法名称</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="essence">魔法本质</label>
+            <input type="text" id="essence" required>
+        </div>
+        <div class="form-group">
+            <label for="maxCost">最高魔力花费</label>
+            <input type="number" id="maxCost" required min="0" onchange="calculateMagic()">
+        </div>
+        <div class="form-group">
+            <label for="minCost">最低魔力花费</label>
+            <input type="number" id="minCost" required min="0" onchange="calculateMagic()">
+        </div>
+
+        <div class="form-group">
+            <label for="effect">魔法效果/词条</label>
+            <textarea id="effect" required rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="fluidType">魔法流体类型</label>
+            <input type="text" id="fluidType" readonly>
+        </div>
+        <div class="form-group">
+            <label for="gradeDisplay">魔法等级</label>
+            <input type="text" id="gradeDisplay" readonly>
+        </div>
+        <div class="form-group">
+            <label for="colorDisplay">词条颜色</label>
+            <input type="text" id="colorDisplay" readonly>
+        </div>
+        <div class="form-group">
+            <label for="author">撰写人</label>
+            <input type="text" id="author" required>
+        </div>
+        <div class="form-group">
+            <label for="priceDisplay">价格</label>
+            <input type="text" id="priceDisplay" readonly>
+        </div>
+    <button type="button" onclick="exportMagicToTxt()" style="background-color: #2196F3;">导出为TXT</button>
+    <button type="button" onclick="importToBook()" style="background-color: #9C27B0; margin-left: 10px;">导入到魔法书</button>
+    </form>
+    <script src="../js/magic.js"></script>
+    <script>
+        // 初始化系列操作按钮
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromSeries = urlParams.get('fromSeries');
+            
+            if (fromSeries) {
+                const form = document.getElementById('magicForm');
+                
+                // 添加保存并返回系列按钮
+                const saveBtn = document.createElement('button');
+                saveBtn.textContent = '保存并返回系列';
+                saveBtn.style.marginLeft = '10px';
+                saveBtn.style.backgroundColor = '#4CAF50';
+                saveBtn.onclick = () => {
+                    if (typeof saveItem === 'function') {
+                        saveItem();
+                        window.location.href = `xilie.html?id=${fromSeries}`;
+                    }
+                };
+                form.appendChild(saveBtn);
+                
+                // 添加取消返回按钮
+                const cancelBtn = document.createElement('button');
+                cancelBtn.textContent = '取消返回';
+                cancelBtn.style.marginLeft = '10px';
+                cancelBtn.style.backgroundColor = '#FF9800';
+                cancelBtn.onclick = () => {
+                    window.location.href = 'xilie.html';
+                };
+                form.appendChild(cancelBtn);
+            }
+        });
+    </script>
+    <script>
+        // 保存为草稿功能
+        function saveAsDraft() {
+            const itemData = {
+                name: document.getElementById('name').value,
+                essence: document.getElementById('essence').value,
+                minCost: parseInt(document.getElementById('minCost').value) || 0,
+                maxCost: parseInt(document.getElementById('maxCost').value) || 0,
+                effect: document.getElementById('effect').value,
+                fluidType: document.getElementById('fluidType').value,
+                grade: document.getElementById('gradeDisplay').value,
+                color: document.getElementById('colorDisplay').value,
+                author: document.getElementById('author').value
+            };
+            
+            const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
+            drafts.push({
+                type: 'magic',
+                name: itemData.name || '未命名魔法',
+                date: new Date().toISOString(),
+                data: itemData
+            });
+            localStorage.setItem('drafts', JSON.stringify(drafts));
+            
+            alert('已保存到草稿箱');
+        }
+    </script>
+ <script src = /main.js></script>> 
+</body>
+</html>

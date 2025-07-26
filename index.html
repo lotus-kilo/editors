@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黯淡回响资源编辑器</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>黯淡回响资源编辑器</h1>
+            <p class="subtitle">这下不用再费劲算价格啦——泣露如是说</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="categories">
+                <div class="category-card">
+                    <h3>道具</h3>
+                    <a href="../prop.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>武器</h3>
+                    <a href="../weapon.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>护甲</h3>
+                    <a href="../Armor.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>饰品</h3>
+                    <a href="../Jewelry.html" class="category-btn">进入</a>
+                </div>
+                                <div class="category-card">
+                    <h3>血统</h3>
+                    <a href="../blood.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>职业</h3>
+                    <a href="../job.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>战技</h3>
+                    <a href="../fight.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>魔法</h3>
+                    <a href="../magic.html" class="category-btn">进入</a>
+                </div>
+                <div class="category-card">
+                    <h3>魔法书</h3>
+                    <a href="../magicbook.html" class="category-btn">进入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- Service Worker注册脚本 -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js');
+  });
+}
+</script>
+<script src="/main.js"></script>
+</html>

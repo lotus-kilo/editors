@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法书编辑器</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .book-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .book-form {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .magic-list {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .magic-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        .magic-item:hover {
+            background: #f5f7fa;
+        }
+        .selected-magics {
+            margin-top: 2rem;
+        }
+        .selected-magic {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            background: #f0f8ff;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+        .large-btn {
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="##000000">
+</head>
+<body>
+    <div style="margin-bottom: 20px;">
+        <button onclick="window.location.href='../index.html'" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">返回首页</button>
+    </div>
+    <h1>魔法书编辑器</h1>
+
+    <div class="book-container">
+        <div class="book-sidebar">
+            <h3>我的魔法书</h3>
+            <div id="bookList">
+                <!-- 动态添加魔法书列表 -->
+            </div>
+            <button class="btn-new-book" onclick="createNewBook()">+ 新建魔法书</button>
+        </div>
+
+        <div class="book-main">
+            <div class="book-form">
+                <div class="form-group">
+                    <label for="bookName">魔法书名称</label>
+                    <input type="text" id="bookName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookAuthor">作者</label>
+                    <input type="text" id="bookAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookDescription">描述</label>
+                    <textarea id="bookDescription" rows="3"></textarea>
+                </div>
+
+            <div class="book-actions" style="display: flex; gap: 10px; margin: 20px 0;">
+                <button class="btn-save" onclick="saveCurrentBook()" style="padding: 10px 20px; background-color: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;">保存</button>
+                <button class="btn-import" onclick="showImportDialog()" style="padding: 10px 20px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;">导入魔法</button>
+                <button class="btn-add-magic" onclick="addNewMagic()" style="padding: 10px 20px; background-color: #9b59b6; color: white; border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;">添加魔法</button>
+            </div>
+
+                <div class="selected-magics" id="selectedMagics">
+                    <h3>已选魔法</h3>
+                    <!-- 动态添加已选魔法 -->
+                </div>
+
+                <button class="large-btn" onclick="exportBook()">导出魔法书</button>
+            </div>
+
+            <div class="magic-list">
+                <div class="magic-tabs">
+                    <button class="tab-btn active" onclick="showTab('availableMagics')">可用魔法</button>
+                    <button class="tab-btn" onclick="showTab('importMagics')">导入魔法</button>
+                </div>
+                
+                <div id="availableMagics" class="tab-content active">
+                    <div id="magicItems">
+                        <!-- 动态添加魔法列表 -->
+                    </div>
+                </div>
+                
+                <div id="importMagics" class="tab-content">
+                    <div class="import-options">
+                        <select id="importBookSelect">
+                            <!-- 动态添加可导入的魔法书 -->
+                        </select>
+                        <button onclick="importFromBook()">从魔法书导入</button>
+                    </div>
+                    <div id="importedMagics">
+                        <!-- 动态添加导入的魔法 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .book-container {
+            display: flex;
+            gap: 2rem;
+        }
+        .book-sidebar {
+            width: 250px;
+            background: #f5f7fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .book-main {
+            flex: 1;
+            display: flex;
+            gap: 2rem;
+        }
+        .book-item {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .book-item.active {
+            background: #3498db;
+            color: white;
+        }
+        .btn-new-book {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .magic-tabs {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            background: #eee;
+            border: none;
+            cursor: pointer;
+        }
+        .tab-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .import-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+
+    <script src="../js/magicbook.js"></script>
+     <script src = /main.js></script>> 
+</body>
+</html>
