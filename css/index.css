@@ -1,0 +1,286 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+    color: #333;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    border-radius: 0 0 20px 20px;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.action-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+.btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.category-card {
+    flex: 1;
+    min-width: calc(16.666% - 15px);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.category-prop {
+    flex: 1;
+    min-width: calc(16.666% - 15px);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.category-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.category-prop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.category-weapons {
+    flex: 1;
+    min-width: calc(16.666% - 15px);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.category-weapons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.category-Armor {
+    flex: 1;
+    min-width: calc(16.666% - 15px);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.category-Armor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.category-magic {
+    flex: 1;
+    min-width: calc(16.666% - 15px);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.category-magic {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.category-card h3 {
+    margin: 0 0 1rem 0;
+    color: #3498db;
+}
+.category-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #2ecc71;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+.category-btn:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+.large-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.large-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.large-btn:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .large-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .large-btn {
+        width: 100%;
+    }
+}
+
+/* 自定义对话框样式 */
+.custom-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.dialog-content {
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dialog-content h3 {
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.resource-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.resource-options button {
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.resource-options button:hover {
+    background-color: #555;
+}
+
+.close-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #666;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Toast提示样式 */
+.custom-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
+
+@media (max-width: 768px) {
+    .resource-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .dialog-content {
+        width: 90%;
+    }
+}
